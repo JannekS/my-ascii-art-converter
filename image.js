@@ -1,7 +1,7 @@
 const sharp = require('sharp');
-const imageSrc = './temp/test3.jpg'; 
+// const imageSrc = './temp/test3.jpg'; 
 
-convertToAsciiArt(imageSrc, 300);
+// convertToAsciiArt(imageSrc, 300);
 
 async function convertToAsciiArt(image, maxWidth, inverted) {
     // TODO create validators for arguments
@@ -17,7 +17,7 @@ async function convertToAsciiArt(image, maxWidth, inverted) {
     const brightnessArray = await mapRgbToBrightArr(rgbArray);
     const imageString = mapArrToImgSting(brightnessArray, asciiString, width, height); 
 
-    console.log(imageString);
+    return imageString;
 }
 
 async function setWidth(imageSrc, maxWidth) {
@@ -58,7 +58,9 @@ function mapArrToImgSting(numArray, asciiString, width, height) {
             imageString += asciiString.charAt(mapValue);
             imageString += asciiString.charAt(mapValue);
         }
-        imageString += "\n";
+        imageString += "</br>";
     }
     return imageString;
 }
+
+module.exports = { convertToAsciiArt };
